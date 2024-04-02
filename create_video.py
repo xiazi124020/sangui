@@ -6,8 +6,8 @@ media_info = [
     ("images/test13.png", r"gtts\generated_audios\audio_3.mp3", 3)
 ]
 intro_texts = [
-    {"text": "タイトル", "start": 0, "duration": 1},
-    {"text": "これは説明文です。", "start": 1, "duration": 1}
+    {"text": "タイトル", "start": 0, "duration": 1, "position": ("right", "center")},
+    {"text": "これは説明文です。", "start": 1, "duration": 1, "position": ("center", "bottom")}
 ]
 
 video_generator = VideoGenerator(output_file="final_output.mp4")

@@ -22,10 +22,12 @@ class VideoGenerator:
                     for intro_text_info in intro_texts:
                         text = intro_text_info["text"]
                         start = intro_text_info.get("start", 0) 
-                        duration = intro_text_info.get("duration", audio_duration) 
+                        duration = intro_text_info.get("duration", audio_duration)
+                        position = intro_text_info["position"]
 
-                        txt_clip = TextClip(text, fontsize=24, color='white', font=font, size=img_clip.size)
-                        txt_clip = txt_clip.set_start(start).set_duration(duration).set_position("center")
+                        txt_clip = TextClip(text, fontsize=36, color='orange', font=font)
+                        # txt_clip = TextClip(text, fontsize=36, color='orange', font=font, size=img_clip.size)
+                        txt_clip = txt_clip.set_start(start).set_duration(duration).set_position(position)
                         img_clip = CompositeVideoClip([img_clip, txt_clip])
                 is_setted = True
 
