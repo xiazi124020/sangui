@@ -11,36 +11,21 @@ class VideoGenerator:
 
         clips = []
 
-        is_setted = False
-        for image_path, audio_path, audio_duration in media_info:
-            img_clip = ImageClip(image_path).set_duration(audio_duration)
-            audio_clip = AudioFileClip(audio_path).set_duration(audio_duration)
+        for media in media_info:
+            intro_texts = media["intro_texts"]
+            img_clip = ImageClip(media["image"]).set_duration(media["audio_duration"])
+            audio_clip = AudioFileClip(media["audio_file"]).set_duration(media["audio_duration"])
             img_clip = img_clip.set_audio(audio_clip)
+            img_clip = img_clip.fadein(0.3).fadeout(0.3)
 
-            if intro_texts:
-                if is_setted != True:
-                    for intro_text_info in intro_texts:
-                        text = intro_text_info["text"]
-                        start = intro_text_info.get("start", 0) 
-                        duration = intro_text_info.get("duration", audio_duration)
-                        position = intro_text_info["position"]
+            text = intro_texts["text"]
+            position = intro_texts["position"]
 
-                        txt_clip = TextClip(text, fontsize=36, color='orange', font=font)
-                        # txt_clip = TextClip(text, fontsize=36, color='orange', font=font, size=img_clip.size)
-                        txt_clip = txt_clip.set_start(start).set_duration(duration).set_position(position)
-                        img_clip = CompositeVideoClip([img_clip, txt_clip])
-                is_setted = True
-
+            txt_clip = TextClip(text, fontsize=36, color='white', font=font, size=(img_clip.w - 20, None), method='caption')
+            txt_clip = txt_clip.set_duration(media["audio_duration"]).set_position(position)
+            img_clip = CompositeVideoClip([img_clip, txt_clip])
             clips.append(img_clip)
 
         final_clip = concatenate_videoclips(clips, method="compose")
-        final_clip.write_videofile(self.output_file, fps=fps)
+        final_clip.write_videofile(self.output_file, fps=fps, codec="libx264")
 
-# 使用例
-if __name__ == "__main__":
-    media_info = [
-        ("path/to/image1.png", "path/to/audio1.mp3", 10),
-        ("path/to/image2.png", "path/to/audio2.mp3", 15),
-    ]
-    video_generator = VideoGenerator(output_file="final_output.mp4")
-    video_generator.generate_video(media_info)
