@@ -14,7 +14,7 @@
 - venv\Lib\site-packages\moviepy\config_defaults.py
 - IMAGEMAGICK_BINARY = r"C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe"
 - "C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\type-ghostscript.xml" 加上
---   <type name="Meiryo" fullname="Meiryo" family="Meiryo" weight="400" style="normal" stretch="normal" format="truetype" metrics="C:\\Windows\\Fonts\\meiryo.ttc" glyphs="C:\\Windows\\Fonts\\meiryo.ttc"/>
+    -  <type name="Meiryo" fullname="Meiryo" family="Meiryo" weight="400" style="normal" stretch="normal" format="truetype" metrics="C:\\Windows\\Fonts\\meiryo.ttc" glyphs="C:\\Windows\\Fonts\\meiryo.ttc"/>
 
 ■  voice name
 - ja-JP-NanamiNeural (女性)
