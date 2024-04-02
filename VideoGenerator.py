@@ -27,5 +27,6 @@ class VideoGenerator:
             clips.append(img_clip)
 
         final_clip = concatenate_videoclips(clips, method="compose")
-        final_clip.write_videofile(self.output_file, fps=fps, codec="libx264")
+        # final_clip.write_videofile(self.output_file, fps=fps, codec="libx264", audio_codec="aac")
+        final_clip.write_videofile(self.output_file, fps=fps)
 

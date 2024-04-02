@@ -24,7 +24,8 @@
     - ja-JP-MayuNeural (女性)
     - ja-JP-NaokiNeural (男性)
     - ja-JP-ShioriNeural (女性)
-
+    - https://learn.microsoft.com/ja-jp/azure/ai-services/speech-service/language-support?tabs=tts#personal-voice
+    
 - tts --list_models
     - tts_models/multilingual/multi-dataset/xtts_v2 [already downloaded]
     - tts_models/multilingual/multi-dataset/xtts_v1.1
